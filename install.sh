@@ -56,7 +56,7 @@ if [ ! -f "install-init" ]; then
 	echo "		cd SPONionPi";
 	echo "		sudo sh install.sh"
 	
-	sleep 100;
+	sleep 600;
 	#echo "$(date +%s):">>install.log;
 	#echo "versuche eigenstaendigen Reboot"|tee -a install.log;
 
