@@ -5,4 +5,4 @@ touch git-update-init;
 
 #do something install etc
 
-#rm git-update-init;
+rm git-update-init;

@@ -28,6 +28,7 @@ cd ~;
 
 #cd sponionpi-$datum;
 echo "starte Aktualisierung ueber git";
+cd /home/pi/SPONionPi;
 git pull;
 sudo -u pi bash -c 'cd /home/pi/SPONionPi/; sh git-update.sh;';
 
