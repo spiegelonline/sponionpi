@@ -14,17 +14,16 @@ touch update-init;
 #|tee -a update.log;
 
 echo "$(date +%s):">>update.log;
-#sudo apt-get update;
+sudo apt-get update;
 #|tee -a update.log;
 
 echo "$(date +%s):">>update.log;
 echo "fuehre system-upgrade durch"|tee -a update.log;
-#sudo apt-get upgrade -y
+sudo apt-get upgrade -y
 #|tee -a update.log;
 
 cd ~;
 #echo "lade update ueber git herunter";
-#git clone https://github.com/netzwelt/sponionpi.git sponionpi-$datum;
 
 #cd sponionpi-$datum;
 echo "starte Aktualisierung ueber git";
