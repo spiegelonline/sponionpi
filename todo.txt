@@ -1,0 +1,21 @@
+- interfaces fue wlan-sticks waehlbar machen
+- logging bash scripts verbessern mit loglevels
+- logging fuer php auf file?, ggf alert meldung javascript bei fehlern
+- ip sponion pi im eigenen wlan waehlbar machen
+- dhcp einstellunge waehlbar machen fuer sponion
+- hidden ssid connect fuer sponion pi
+- hidden ssid broadcast fuer sponion pi
+- channel broadcast sponion pi waehlbar machen
+- html css etc sauebern und interface design verbessern
+- debug mode mit diagnose: ping, show ip etc
+- remove global var def? 
+- var name cleanup, function name cleanup
+- eth0 einbinden, ggf waehlbar machen ob wlan1 <=> wlan0 oder eth0 <=> wlan0 oder gar eth0,wlan1 <=> wlan0, d.h. vor allem iptables anpassen
+- nur als router funktion ohne tor: nur iptables hostapd starten 
+- wlan ssid und pw zeichenraum erweitern
+- change all comments and vars to same language ;-) 
+- bash config script with apache deactivation
+- web-update script show end message as alert
+- extract wlan interface via udev
+- error messsage wrong wlan stick type
+- change save dir of pw/login file for apache to dir readable by www-data, other than /var/www

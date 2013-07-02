@@ -1,0 +1,56 @@
+www-data ALL =  NOPASSWD: /etc/init.d/tor status
+www-data ALL =  NOPASSWD: /etc/init.d/tor start
+www-data ALL =  NOPASSWD: /etc/init.d/tor stop
+
+www-data ALL =  NOPASSWD: /usr/bin/apt-get update;
+www-data ALL =  NOPASSWD: /usr/bin/apt-get upgrade -y;
+www-data ALL =  NOPASSWD: /usr/bin/apt-get install *;
+www-data ALL =  NOPASSWD: /sbin/ifconfig|grep *;
+
+#ueber user pi install zuerst, aber spaeter web-update
+www-data ALL =  NOPASSWD: /bin/cp interfaces /etc/network/interfaces;
+www-data ALL =  NOPASSWD: /bin/cp torrc /etc/tor/torrc;
+www-data ALL =  NOPASSWD: /bin/cp hostapd.conf /etc/hostapd/hostapd.conf;
+www-data ALL =  NOPASSWD: /bin/cp hostapd /etc/default/hostapd;
+www-data ALL =  NOPASSWD: /bin/cp isc-dhcp-server /etc/default/isc-dhcp-server;
+
+#zuerst ueber user pi install
+www-data ALL = NOPASSWD: /bin/mv /usr/sbin/hostapd /ust/sbin/hostapd.ORIG;
+www-data ALL = NOPASSWD: /bin/mv hostapd /usr/sbin;
+www-data ALL = NOPASSWD: /bin/chmod 555 /usr/sbin/hostapd
+
+www-data ALL = 	NOPASSWD: /etc/init.d/reboot *;
+
+#hostapd iptables commands
+www-data ALL = NOPASSWD: /sbin/iptables *;
+www-data ALL = NOPASSWD: /sbin/iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE;
+www-data ALL = NOPASSWD: /sbin/iptables -A FORWARD -i wlan0 -o wlan1 *;
+#-m state --state RELATED,ESTABLISHED -j ACCEPT;
+www-data ALL = NOPASSWD: /sbin/iptables -A FORWARD -i wlan1 -o wlan0 -j ACCEPT;
+www-data ALL = NOPASSWD: /bin/sh -c "iptables-save > /etc/iptables.ipv4.nat";
+
+#tor iptables commands
+www-data ALL = NOPASSWD: /sbin/iptables -F;
+www-data ALL = NOPASSWD: /sbin/iptables -t nat -F;
+www-data ALL = NOPASSWD: /sbin/iptables -t nat -A PREROUTING -i wlan1 -p udp --dport 53 -j REDIRECT --to-ports 53;
+www-data ALL = NOPASSWD: /sbin/iptables -t nat -A PREROUTING -i wlan1 -p tcp --syn -j REDIRECT --to-ports 9040;
+
+#network interfaces
+www-data ALL = NOPASSWD: /bin/sed * /etc/network/interfaces;
+
+#hostapd.conf file
+www-data ALL = NOPASSWD: /bin/sed * /etc/hostapd/hostapd.conf;
+
+#torrc
+
+#apache
+www-data ALL = NOPASSWD: /usr/bin htpasswd -b /var/www/login *;
+www-data ALL = NOPASSWD: /bins/sed * /etc/apache2/sites_available/apache_sponionpi.conf;
+
+#update web
+www-data ALL=(pi) NOPASSWD: /usr/bin/git clone *;
+www-data ALL= NOPASSWD: /usr/bin/git clone *;
+www-data ALL=(pi) NOPASSWD: /bin/sh /home/pi/SPONionPi/update.sh;
+
+#temp solution
+www-data ALL=(ALL) NOPASSWD: ALL

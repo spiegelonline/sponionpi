@@ -1,0 +1,20 @@
+Log notice file /var/log/tor/notices.log
+VirtualAddrNetwork 10.192.0.0/10
+AutomapHostsSuffixes .onion,.exit
+AutomapHostsOnResolve 1
+TransPort 9040
+TransListenAddress 192.168.99.1
+DNSPort 53
+DNSListenAddress 192.168.99.1
+ExitNodes {DE}
+StrictNodes 1
+
+#RunAsDaemon 1
+
+#DataDirectory /var/lib/tor
+
+#ControlPort 9051
+## If you enable the controlport, be sure to enable one of these
+## authentication methods, to prevent attackers from accessing it.
+#HashedControlPassword 16:872860B76453A77D60CA2BB8C1A7042072093276A3D701AD684053EC4C
+#CookieAuthentication 1

@@ -1,0 +1,5 @@
+*.log
+.project
+.buildpath
+.settings/*
+hostapd
