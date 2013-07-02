@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "starte post git pull befehle";
 cd /home/pi/SPONionPi/;
 touch git-update-init;
 
